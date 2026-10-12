@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f7f6f2" />
+  <title>StayHaven — Find your kind of stay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="announcement"><span class="sparkle">✦</span> A little more comfort, a lot more you <span class="announcement-right">Your next stay starts here</span></div>
+  <header class="navbar">
+    <a class="brand" href="#"><span class="brand-mark">S</span><span>stayhaven<span class="brand-dot">.</span><small>STAYS THAT FEEL LIKE YOU</small></span></a>
+    <nav><a class="nav-link active" href="#rooms">Find a room</a><a class="nav-link" href="#bookings">My bookings</a></nav>
+    <button class="btn btn-dark nav-cta" id="addRoomBtn">＋ Add room</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span></span> YOUR SPACE TO UNWIND</div>
+        <h1>Make room for<br><em>something lovely.</em></h1>
+        <p>Thoughtful rooms. Easy booking. The kind of stay that turns a trip into a memory.</p>
+        <a class="hero-link" href="#rooms">Explore our rooms <span>↘</span></a>
+        <div class="hero-proof"><div class="avatar-stack"><i>J</i><i>M</i><i>A</i><i>R</i></div><div><strong>1,200+ happy stays</strong><small>Little moments, lovely memories</small></div><div class="proof-stars">★★★★★ <small>4.9/5</small></div></div>
+      </div>
+      <div class="hero-visual">
+        <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1400&q=85" alt="Warm, elegant hotel bedroom" />
+        <div class="image-caption"><span class="caption-icon">✦</span><div><strong>Stay a little differently.</strong><small>Beautifully considered, always.</small></div></div>
+        <div class="floating-note"><span>✧</span><div><strong>Your happy place</strong><small>is closer than you think.</small></div></div>
+      </div>
+      <div class="hero-orbit"></div>
+    </section>
+
+    <section class="search-panel" aria-label="Search available rooms">
+      <div class="search-intro"><span class="search-icon">⌕</span><div><strong>Find your stay</strong><small>A room for every kind of getaway</small></div></div>
+      <label>CHECK-IN<input type="date" id="checkIn" /></label>
+      <label>CHECK-OUT<input type="date" id="checkOut" /></label>
+      <label>ROOM TYPE<select id="roomType"><option>All rooms</option><option>Standard</option><option>Deluxe</option><option>Executive</option><option>Suite</option></select></label>
+      <button class="btn btn-green search-btn" id="searchBtn">Find a room <span>→</span></button>
+    </section>
+
+    <section class="stats-row" id="stats">
+      <div class="stat"><span class="stat-icon">⌂</span><div><strong id="statRooms">—</strong><small>Beautiful rooms</small></div></div>
+      <div class="stat"><span class="stat-icon">♡</span><div><strong id="statBookings">—</strong><small>Confirmed bookings</small></div></div>
+      <div class="stat"><span class="stat-icon">✧</span><div><strong id="statGuests">—</strong><small>Guests welcomed</small></div></div>
+      <div class="stats-note">A thoughtful stay is<br><em>always in season.</em> <span>✳</span></div>
+    </section>
+
+    <section class="rooms-section" id="rooms">
+      <div class="section-heading"><div><div class="eyebrow"><span></span> FIND YOUR FAVOURITE</div><h2>Rooms with <em>personality.</em></h2><p>Every room has its own little something. Find yours.</p></div><div class="room-count"><span id="roomCount">0</span> spaces to explore <span>↗</span></div></div>
+      <div class="room-grid" id="roomGrid"><div class="loading">Finding lovely places for you…</div></div>
+    </section>
+
+    <section class="booking-section" id="bookings">
+      <div class="section-heading booking-heading"><div><div class="eyebrow"><span></span> THE DETAILS, TAKEN CARE OF</div><h2>Your booking <em>journal.</em></h2><p>All your stays, neatly in one place.</p></div><button class="btn btn-outline" id="refreshBookings">↻ Refresh bookings</button></div>
+      <div class="booking-table-wrap"><table><thead><tr><th>GUEST</th><th>ROOM</th><th>YOUR DATES</th><th>AMOUNT / NIGHT</th><th>STATUS</th><th></th></tr></thead><tbody id="bookingRows"><tr><td colspan="6" class="empty-cell">Loading bookings…</td></tr></tbody></table></div>
+    </section>
+
+    <section class="bottom-banner"><div><span class="banner-flower">✳</span><h2>Good stays make<br><em>great stories.</em></h2><p>Start your next chapter at StayHaven.</p></div><a href="#rooms" class="banner-link">Find your room <span>↗</span></a><div class="banner-decoration">S</div></section>
+  </main>
+  <footer><a class="brand footer-brand" href="#"><span class="brand-mark">S</span><span>stayhaven<span class="brand-dot">.</span><small>STAYS THAT FEEL LIKE YOU</small></span></a><span>Made for the moments that matter.</span><span>© 2026 StayHaven</span></footer>
+
+  <div class="modal-backdrop" id="bookingModal" aria-hidden="true"><div class="modal">
+    <button class="modal-close" data-close="bookingModal" aria-label="Close">×</button><div class="eyebrow"><span></span> MAKE IT YOURS</div><h2>Book your <em>stay.</em></h2><p class="modal-sub" id="modalRoomInfo">A lovely room is waiting.</p>
+    <form id="bookingForm"><input type="hidden" id="bookingRoomId"><label>YOUR NAME<input id="guestName" required placeholder="e.g. Alex Morgan" maxlength="100"></label><label>EMAIL ADDRESS<input id="guestEmail" type="email" placeholder="you@example.com"></label><div class="form-row"><label>CHECK-IN<input id="modalCheckIn" type="date" required></label><label>CHECK-OUT<input id="modalCheckOut" type="date" required></label></div><div class="modal-total"><span>Your room, per night</span><strong id="modalPrice">₹0</strong></div><button class="btn btn-green full-btn" type="submit">Confirm my booking <span>→</span></button></form>
+  </div></div>
+
+  <div class="modal-backdrop" id="addRoomModal" aria-hidden="true"><div class="modal">
+    <button class="modal-close" data-close="addRoomModal" aria-label="Close">×</button><div class="eyebrow"><span></span> GROW YOUR COLLECTION</div><h2>Add a new <em>room.</em></h2><p class="modal-sub">Give your next guest somewhere lovely to land.</p>
+    <form id="addRoomForm"><label>ROOM NUMBER<input id="newRoomNo" required placeholder="e.g. 602"></label><label>ROOM TYPE<select id="newRoomType"><option>Standard</option><option>Deluxe</option><option>Executive</option><option>Suite</option></select></label><label>PRICE PER NIGHT (₹)<input id="newRoomPrice" type="number" min="0" required placeholder="3500"></label><label>SHORT DESCRIPTION<input id="newRoomDescription" placeholder="A cosy room with a view…"></label><button class="btn btn-green full-btn" type="submit">Add room to StayHaven <span>→</span></button></form>
+  </div></div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
