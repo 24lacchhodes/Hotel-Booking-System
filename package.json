@@ -1,0 +1,14 @@
+{
+  "name": "stayhaven-hotel-booking",
+  "version": "1.0.0",
+  "description": "A stylish full-stack hotel room booking system built with HTML, CSS, JavaScript, Express and SQLite.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "sqlite3": "^5.1.7"
+  }
+}
